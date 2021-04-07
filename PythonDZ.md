@@ -39,24 +39,23 @@
 
 По-поводу пути можно ~ поменять на папку, в которой лежат файлы - т.е. /home/USERNAME/netology/sysadm-homeworks	
 
-А показывать может не все, т.к. ищет только первое упоминание про modified, а их может быть несколько. Нужно сделать циклом.
+Про не все показывает - после запуска :) выяснил, что break - лишнее, без него показывает все изменения и штатно выходит.
 
 	```python
     #!/usr/bin/env python3
 
-    import os
+	import os
 
-	bash_command = ["cd /home/USERNAME/netology/sysadm-homeworks", "git status"]
+	bash_command = ["cd ~/netology/sysadm-homeworks", "git status"]
 	result_os = os.popen(' && '.join(bash_command)).read()
-    is_change = False
+	is_change = False
+	print(result_os)
 	for result in result_os.split('\n'):
-        if result.find('modified') != -1:
-            while (result) 
-			do
-			prepare_result = result.replace('\tmodified:   ', '')
-            print(prepare_result)
-            break
-			done
+   	 if result.find('modified') != -1:
+       		 prepare_result = result.replace('\tmodified:   ', '')
+       		 print(prepare_result)
+
+
 
 	```
 	
@@ -65,52 +64,51 @@
 
 	```python
     #!/usr/bin/env python3
+from sys import argv
+import os
 
-	from sys import path_to_repo
-    import os
 
-	bash_command = ["cd $path_to_repo", "git status"]
-	result_os = os.popen(' && '.join(bash_command)).read()
-    is_change = False
-	for result in result_os.split('\n'):
-        if result.find('modified') != -1:
-            while (result) 
-			do
-			prepare_result = result.replace('\tmodified:   ', '')
-            print(prepare_result)
-            break
-			done
+bash_command = ["cd ",argv[1], "git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+is_change = False
+print(result_os)
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(prepare_result)
 
 	```
-
+Добавил получение пути по argv
 
 
 1. Наша команда разрабатывает несколько веб-сервисов, доступных по http. Мы точно знаем, что на их стенде нет никакой балансировки, кластеризации, за DNS прячется конкретный IP сервера, где установлен сервис. Проблема в том, что отдел, занимающийся нашей инфраструктурой очень часто меняет нам сервера, поэтому IP меняются примерно раз в неделю, при этом сервисы сохраняют за собой DNS имена. Это бы совсем никого не беспокоило, если бы несколько раз сервера не уезжали в такой сегмент сети нашей компании, который недоступен для разработчиков. Мы хотим написать скрипт, который опрашивает веб-сервисы, получает их IP, выводит информацию в стандартный вывод в виде: <URL сервиса> - <его IP>. Также, должна быть реализована возможность проверки текущего IP сервиса c его IP из предыдущей проверки. Если проверка будет провалена - оповестить об этом в стандартный вывод сообщением: [ERROR] <URL сервиса> IP mismatch: <старый IP> <Новый IP>. Будем считать, что наша разработка реализовала сервисы: drive.google.com, mail.google.com, google.com.
 
 ```python
 from sys import argv
-import socket
+import sys,socket
 
 output=[]
+domain_name=argv
+y = len(domain_name)
 
-for n in range(1,4): #Первоначально заполним таблицу айпишниками по прилетевшим доменным именам
-	domain_name = argv[n]
-	ip = socket.gethostbyname(domain_name)
+for n in range(1,y): #добавил получение любого количества аргументов
+	a = domain_name[n]
+	ip = socket.gethostbyname(a)
 	output.insert(n,ip)
 
-for x in output: # Выведем эти адреса
-        print("__"+x+"__")
+for x in output:
+        print(" __ "+x+"__")
 
 
-for i in range(0,5): #пять раз подряд проверим не поменялись-ли они
-	for n in range(1,4):
-		domain_name = argv[n]
-		ip = socket.gethostbyname(domain_name)
-		print(domain_name+" "+ip)
-		test = output[n]
+while y > 1: #цикл теперь бесконечный
+	for n in range(1,y):
+		ip = socket.gethostbyname(domain_name[n])
+		print(domain_name[n]+" "+ip)
+		test = output[n-1]
 		if test != ip:
-			print("[ERROR] "+domain_name+" IP mismatch: "+output[n]+" "+ip)
+			print("[ERROR] "+domain_name[n]+" IP mismatch: "+output[n]+" "+ip)
 		output.insert(n,ip)
+
 ```
 
 Запрос к такому скрипту будет выглядеть так: 
