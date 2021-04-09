@@ -4,7 +4,7 @@ import sys,socket,json,yaml
 output=[]
 domain_name=argv
 y = len(domain_name)
-data =[]
+data=[]
 
 for n in range(1,y): #забиваем массив айпишниками
 	a = domain_name[n]
@@ -12,12 +12,12 @@ for n in range(1,y): #забиваем массив айпишниками
 	output.insert(n,ip)
 
 for x in output:
-        print(" __ "+x+"__")
+	print(" __ "+x+"__")
 
 for k in range(0,y-1): #пишем набор из адресов и айпишников в json
-	q = '{ "'+domain_name[k+1]+'" : "'+output[k]+'"}'
-	print(q)
-        #data.append(q)
+	q ='{ "'+domain_name[k+1]+'" : "'+output[k]+'"}'
+	#print(q)
+	data.insert(k,q)
 with open("ipnames.json", "w") as write_file:
                         json.dump(data, write_file)
 
