@@ -54,7 +54,9 @@
    	 if result.find('modified') != -1:
        		 prepare_result = result.replace('\tmodified:   ', '')
        		 print(prepare_result)
-
+	pathtodir = ["pwd"]
+	resultpath = os.popen(' && '.join(pathtodir)).read()
+	print(resultpath) #печатаем путь, где репозиторий
 
 
 	```
@@ -67,16 +69,21 @@
 from sys import argv
 import os
 
-
 bash_command = ["cd ",argv[1], "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
 is_change = False
 print(result_os)
-for result in result_os.split('\n'):
-    if result.find('modified') != -1:
-        prepare_result = result.replace('\tmodified:   ', '')
-        print(prepare_result)
 
+if os.path.isdir(argv[1]+'.git') == true: #проверяем, является-ли директория репозиторием
+	for result in result_os.split('\n'):
+		if result.find('modified') != -1:
+		prepare_result = result.replace('\tmodified:   ', '')
+		print(prepare_result)
+else:
+	print('Dir not repo')
+pathtodir = ["pwd"]
+resultpath = os.popen(' && '.join(pathtodir)).read()
+print(resultpath) #печатаем путь, где репозиторий
 ```
 
 Добавил получение пути по argv
