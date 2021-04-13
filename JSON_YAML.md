@@ -65,6 +65,10 @@ while y > 1: #цикл теперь бесконечный
 		output.insert(n,ip)
 ```
 
+По данному заданию я приложил отдельный файл по адресу
+https://github.com/Pitonixx/devops-netology/blob/main/json-yaml/domname.py
+
+
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
 
