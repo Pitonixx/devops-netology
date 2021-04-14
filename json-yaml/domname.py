@@ -14,17 +14,17 @@ for n in range(1,y): #забиваем массив айпишниками
 for x in output:
 	print(" __ "+x+"__")
 
-def JSONimport():
+def json_import(domain_name,output):
 	for k in range(0,y-1): #пишем набор из адресов и айпишников в json
 		q ='{ "'+domain_name[k+1]+'" : "'+output[k]+'"}'
 		#print(q)
 		data.insert(k,q)
-	with open("ipnames.json", "w") as write_file:
+	with open("ipnames.json","w") as write_file:
 		json.dump(data, write_file)
 	write_file.close()
 	del data[:]
 
-def YAMLimport():
+def yaml_import(domain_name,output):
 	for k in range(0,y-1): #пишем набор из адресов и айпишников в yaml
 		q = domain_name[k+1]+" : "+output[k]
 		#print(q)
@@ -35,14 +35,14 @@ def YAMLimport():
 	del data[:]
 
 
-while y > 1:
+while y>1:
 	for n in range(1,y):
 		ip = socket.gethostbyname(domain_name[n])
 		print(domain_name[n]+" "+ip)
 		test = output[n-1]
 		if test != ip:
 			print("[ERROR] "+domain_name[n]+" IP mismatch: "+output[n]+" "+ip)
-			JSONimport()
-			YAMLimport()
+			json_import(domain_name,output)
+			yaml_import(domain_name,output)
 			break
 		output.insert(n,ip)
