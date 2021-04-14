@@ -74,16 +74,17 @@ result_os = os.popen(' && '.join(bash_command)).read()
 is_change = False
 print(result_os)
 
+pathtodir = ["pwd"]
+resultpath = os.popen(' && '.join(pathtodir)).read()
+
 if os.path.isdir(argv[1]+'.git') == true: #проверяем, является-ли директория репозиторием
 	for result in result_os.split('\n'):
 		if result.find('modified') != -1:
 		prepare_result = result.replace('\tmodified:   ', '')
-		print(prepare_result)
+		print(resultpath+"\"+prepare_result) # внес изменение на печать полного пути к измененному файлу
 else:
 	print('Dir not repo')
-pathtodir = ["pwd"]
-resultpath = os.popen(' && '.join(pathtodir)).read()
-print(resultpath) #печатаем путь, где репозиторий
+
 ```
 
 Добавил получение пути по argv
