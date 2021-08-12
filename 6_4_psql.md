@@ -55,7 +55,9 @@ test_database=# SELECT avg_width, attname FROM pg_stats WHERE tablename ='orders
 >Можно ли было изначально исключить "ручное" разбиение при проектировании таблицы orders?
 
 ```mysql-psql
-CREATE TABLE orders2 LIKE orders INCLUDING ALL;
+CREATE TABLE orders2 (LIKE orders INCLUDING ALL);
+
+INSERT INTO orders2 SELECT * FROM orders;
 
 TRUNCATE orders;
 
