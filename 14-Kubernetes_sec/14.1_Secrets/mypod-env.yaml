@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: mypod
+    image: nginx
+    env:
+      - name: MYPOD_USER
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: username
+      - name: MYPOD_PASS
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: password
