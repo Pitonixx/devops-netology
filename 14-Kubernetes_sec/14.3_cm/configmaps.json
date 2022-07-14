@@ -1,0 +1,54 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "data": {
+                "name": "netology.ru"
+            },
+            "kind": "ConfigMap",
+            "metadata": {
+                "creationTimestamp": "2022-07-14T12:13:34Z",
+                "name": "domain",
+                "namespace": "default",
+                "resourceVersion": "351216",
+                "uid": "ca78b1f5-091c-43f9-a2e8-771dee6cc13e"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "data": {
+                "ca.crt": "-----BEGIN CERTIFICATE-----\nMIIC/jCCAeagAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl\ncm5ldGVzMB4XDTIyMDYxNzE0MjUxMloXDTMyMDYxNDE0MjUxMlowFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKJ7\nqESCcWZb8DNE3EGFeJrx1i3/a7x5RaLH8iuJVbs+KYpQAumPVDzGkfysm0eLnekL\nXSDb6sfrg5IVsEMYPdPrsaYdDTpKhCwLCl45eakpqB3mKORNK1rUZB9mupNZAp6Q\nbluzsQgNYfAAJfQc+JxLgS6H5peX0rcXWE6DS3YcwEqFu9vSJop+xft3ZQ3dXUQB\n6SM/X3Nrq+ZwkOAGMaub4MDBBQYLwrZL1gA850q3r49yej24U9/1hFS8+N7+GX04\nw1X88NVmckA5LU6sa7+zxVtoqPfrSVHGYT1iV02sU4ucsl0N+J70bfmqiw4juygF\nybZOR5uILy8wCEPbRAMCAwEAAaNZMFcwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB\n/wQFMAMBAf8wHQYDVR0OBBYEFCHFkri+eq7qPgmegELgT8/98EZhMBUGA1UdEQQO\nMAyCCmt1YmVybmV0ZXMwDQYJKoZIhvcNAQELBQADggEBAIVzE3FBCeikmz15s2nY\ndW+IwOLUxuqpHJDPQVnMbMLWJ9/MLI5ZTaCOyFzExMyCAAy8S6aJGU74txELV3nv\ncCMhbrc6lN4FrDHhK1kUpd/8TV9Y0XLihAiarc619JsltxRqsN7CBIYFlQ5kfx4K\nzqgy2NDv/OiRIiJcJUhCceP034nMk/eqzg5CgPJwjNlxWVm/DBV5/N69cq8iesUT\nzOba2qEWSt8qpubaohz7YAFnXHk9LQrK04ZXU9eTnQ/fcU3eKmwyqNGswrGHh3Ap\nx4bR92KDbgfsweP/4y56shep2Z2gaof/MGM3h8PGTJGRwPpo226xwuJJWpqfLWAP\nbHQ=\n-----END CERTIFICATE-----\n"
+            },
+            "kind": "ConfigMap",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/description": "Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."
+                },
+                "creationTimestamp": "2022-06-17T14:26:00Z",
+                "name": "kube-root-ca.crt",
+                "namespace": "default",
+                "resourceVersion": "338",
+                "uid": "916c0d4b-1b87-4afe-b792-2a108f8c6cf5"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "data": {
+                "nginx.conf": ""
+            },
+            "kind": "ConfigMap",
+            "metadata": {
+                "creationTimestamp": "2022-07-14T12:13:09Z",
+                "name": "nginx-config",
+                "namespace": "default",
+                "resourceVersion": "351149",
+                "uid": "13635a60-bf27-48a8-a76d-d441c2d6003f"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
